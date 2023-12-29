@@ -25,7 +25,7 @@ exports.sendMail = async function (mailObj) {
     );
     return transporter.sendMail({
       from: {
-        name: "Healing.Tube",
+        name: "Veterinarian.Tube",
         address: "info@veterinarian.tube",
       },
       to: mailObj.email,
