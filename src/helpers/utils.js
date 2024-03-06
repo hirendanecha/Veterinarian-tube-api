@@ -106,7 +106,7 @@ exports.notificationMail = async (userData) => {
 
 exports.channelNotificationEmail = async (userData) => {
   let name = userData?.Username;
-  let msg = `You have been assign in FreedomTube channel by the VeterinarianTube Admin.
+  let msg = `You have been assign in VeterinarianTube channel by the VeterinarianTube Admin.
   To access your channel, log into your VeterinarianTube account,click on the
   VeterinarianTube icon at the top of the page,then click on My Channel.`;
   let redirectUrl = `${environment.FRONTEND_URL}`;
