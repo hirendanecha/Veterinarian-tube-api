@@ -138,7 +138,7 @@ exports.communityApproveEmail = async (profileId, isApprove) => {
     } else {
       msg = `VeterinarianTube has unapproved your Veterinarian application`;
     }
-    let redirectUrl = `${environment.FRONTEND_URL}`;
+    let redirectUrl = `${environment.FRONTEND_URL}veterinarians`;
     const mailObj = {
       email: userData[0].Email,
       subject: "Veterinarian notification",
@@ -155,13 +155,13 @@ exports.cancelAppointmentNotificationMail = async (id, veterinarianName) => {
     "select u.Email,p.FirstName,p.LastName,p.Username from users as u left join profile as p on p.UserID = u.Id where p.ID =?";
   const values = [id];
   const [data] = await this.executeQuery(query, values);
-  let name = data?.Username || userData.FirstName;
+  let name = data?.Username || data.FirstName;
   let msg = `Your appointment with ${veterinarianName} has been cancelled, please book another slot!`;
   let redirectUrl = `${environment.FRONTEND_URL}`;
 
   const mailObj = {
     email: data.Email,
-    subject: "Healing notification",
+    subject: "Veterinarian notification",
     root: "../email-templates/notification.ejs",
     templateData: { name: name, msg: msg, url: redirectUrl },
   };
@@ -277,7 +277,7 @@ const getIcalObjectInstance = async (
     domain: "veterinarian.tube",
     name: "Appointments Reminder",
   });
-  //   cal.domain("healing.tube");
+  //   cal.domain("veterinarian.tube");
   cal.createEvent({
     start: starttime, // eg : moment()
     end: moment(starttime).add(30, "min"),
